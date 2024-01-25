@@ -1,0 +1,64 @@
+<div *ngIf="Series">
+  <title></title>
+  <link rel="stylesheet" href="./serie-detalhes.component.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <body>
+    <div
+      class="background"
+      style="background-image: url(https://image.tmdb.org/t/p/original/{{
+        Series.backdrop_path
+      }}) "
+    >
+      <div class="foreground">
+        <div class="container">
+          <div class="poster">
+            <img
+              src="https://image.tmdb.org/t/p/w500/{{ Series.poster_path }}"
+              alt=""
+            />
+          </div>
+
+          <div class="info">
+            <div class="movie-title">{{ Series.name }}</div>
+            <div class="movie-detail">
+              <div class="set">
+                <label>Release Date :</label>
+                <span>{{ Series.first_air_date }}</span>
+              </div>
+              <div class="set">
+                <label>Running Time :</label>
+                <span>{{ Series.episode_run_time }} minutes</span>
+              </div>
+              <div class="set">
+                <label>Genre :</label>
+                <span *ngFor="let genres of Series.genres"
+                  >| {{ genres.name }}
+                </span>
+              </div>
+              <div class="set">
+                <label>Rating :</label>
+                <span>| {{ Series.vote_average }} </span>
+              </div>
+            </div>
+            <div class="movie-description">
+              {{ Series.overview }}
+            </div>
+            <div class="movie-cast">
+              <div class="header">Cast</div>
+              <div class="list">
+                <div class="cast" *ngFor="let cast of Credits.cast.slice(0, 6)">
+                  <img
+                    src="https://image.tmdb.org/t/p/w500/{{
+                      cast.profile_path
+                    }}"
+                  />
+                  <label>{{ cast.name }}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</div>

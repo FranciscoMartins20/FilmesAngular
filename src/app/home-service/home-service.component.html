@@ -1,0 +1,87 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+  integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+  crossorigin="anonymous"
+/>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="searchbar">
+      <input
+        class="search_input"
+        type="search"
+        placeholder="Movies and Series..."
+        [(ngModel)]="search"
+      />
+      <a class="search_icon" type="submit" (click)="getSearch()"
+        ><i class="fas fa-search"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <h1 style="margin: 20px; font-family: verdana">
+    Popular Movies at the moment:
+  </h1>
+
+  <div class="card" *ngFor="let Movies of Movies.results.slice(0, 5)">
+    <div class="img1">
+      <a routerLink="/filmes/filmes-detalhes/{{ Movies.id }}">
+        <img
+          class="movie_poster"
+          src="https://image.tmdb.org/t/p/w500/{{ Movies.poster_path }}"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="title">{{ Movies.title }}</div>
+
+    <div class="catagory" style="background-color: darkblue">Filmes</div>
+    <a>
+      <div class="views">Views: {{ Movies.popularity }}</div>
+    </a>
+  </div>
+  <h1 style="margin: 20px; font-family: verdana">
+    Popular Series at the moment:
+  </h1>
+
+  <div class="card" *ngFor="let Series of Series.results.slice(0, 5)">
+    <div class="img1">
+      <a routerLink="/series/series-detalhes/{{ Series.id }}">
+        <img
+          class="movie_poster"
+          src="https://image.tmdb.org/t/p/w500/{{ Series.poster_path }}"
+          alt=""
+        />
+      </a>
+    </div>
+
+    <div class="title">{{ Series.name }}</div>
+
+    -->
+    <a><div class="catagory" style="background: darkorange">Séries</div></a>
+    <a
+      ><div class="views">Views: {{ Series.popularity }}</div></a
+    >
+    <a
+      ><div class="type">Views: {{ Series.popularity }}</div></a
+    >
+  </div>
+</div>
